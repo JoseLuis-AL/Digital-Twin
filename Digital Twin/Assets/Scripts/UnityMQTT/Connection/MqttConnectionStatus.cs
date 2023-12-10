@@ -1,8 +1,6 @@
-using UnityEngine;
-
-namespace UnityMQTT.Events
+namespace UnityMQTT
 {
-    public enum MqttStatus
+    public enum MqttConnectionStatus
     {
         Connecting,
         Connected,

@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 139489847}
   m_Layer: 0
-  m_Name: Engranaje 2
+  m_Name: Gear 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -477,7 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1075822255}
   m_Layer: 0
-  m_Name: Engranaje 1
+  m_Name: Gear 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -516,7 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1103677895}
   m_Layer: 0
-  m_Name: Eje
+  m_Name: Axis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -610,7 +610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1356623070}
   m_Layer: 0
-  m_Name: Bara
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -647,7 +647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1671778691}
   m_Layer: 0
-  m_Name: Carcasa
+  m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1312,7 +1312,7 @@ GameObject:
   - component: {fileID: 543450652909108289}
   - component: {fileID: 919132148905649916}
   m_Layer: 0
-  m_Name: Modelo - Planta
+  m_Name: Digital Twin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1330,6 +1330,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39191fca6df616f4686f2a2aa6c40b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokerAddress: 127.0.0.1
+  brokerPort: 1883
+  autoConnect: 0
+  connectionDelay: 500
+  timeoutOnConnection: 30000
+  _topic: 
+  _barTransform: {fileID: 1356623070}
+  _zMaxLimit: 199
+  _zMinLimit: 0
+  _maxCounts: 2500
+  _minCounts: 0
+  _onConnecting:
+    Status: 0
+    Title: Conectando
+    Message: Conectando con el servidor...
+  _onConnected:
+    Status: 1
+    Title: "\xA1Conectado!"
+    Message: "Se estableci\xF3 con el servidor."
+  _onConnectionFailed:
+    Status: 2
+    Title: "Fell\xF3 en la conexi\xF3n"
+    Message: "Ocurri\xF3 un fall\xF3 con la conexi\xF3n."
+  _onConnectionClose:
+    Status: 3
+    Title: Desconectado
+    Message: "Se termin\xF3 la conexi\xF3n con el servidor."
+  _disconnectEvtSO: {fileID: 11400000, guid: 8e3db65559e31774984b0b8e3fce9b66, type: 2}
+  _connectEvtSO: {fileID: 11400000, guid: 58a2c1bae86774f4a912624bfdf59618, type: 2}
+  _connectionStatusEvtSO: {fileID: 11400000, guid: 33cc1daebd85d6846a5c2e69dee60ddc, type: 2}
 --- !u!23 &1022998676531662259
 MeshRenderer:
   m_ObjectHideFlags: 0
