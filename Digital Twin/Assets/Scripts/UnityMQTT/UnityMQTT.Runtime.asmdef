@@ -1,9 +1,8 @@
 {
-    "name": "DigitalTwin.Runtime",
+    "name": "UnityMQTT.Runtime",
     "rootNamespace": "",
     "references": [
-        "GUID:97f2345c0df066143b2ccea8e5354795",
-        "GUID:c1f2fb421907f884d97488c83ecf2f40"
+        "GUID:97f2345c0df066143b2ccea8e5354795"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
