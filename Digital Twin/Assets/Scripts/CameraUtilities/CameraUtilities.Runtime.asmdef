@@ -1,3 +1,17 @@
 {
-	"name": "CameraUtilities.Runtime"
+    "name": "CameraUtilities.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c1f2fb421907f884d97488c83ecf2f40",
+        "GUID:97f2345c0df066143b2ccea8e5354795"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

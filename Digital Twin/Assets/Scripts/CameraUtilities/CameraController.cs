@@ -1,36 +1,34 @@
 using UnityEngine;
+using UnityMQTT.Connection;
+using UnityMQTT.Events;
 
 namespace CameraUtilities
 {
     [RequireComponent(typeof(Camera))]
     public class CameraController : MonoBehaviour
     {
-        /// <summary>
-        /// Target the camera is looking at.
-        /// </summary>
         [Header("Look At")]
         [SerializeField] private Transform _target;
 
-        /// <summary>
-        /// Camera reference.
-        /// </summary>
-        private Camera _camera;
+        [Header("Events SO")]
+        [SerializeField] private MqttConnectionStatusEvtSO _connectionStatusEvtSO;
 
-        /// <summary>
-        /// Previous camera position.
-        /// </summary>
+        private bool _canMove = false;
+        private Camera _camera;
         private Vector3 _prevPosition;
 
-        /// <summary>
-        /// Get the camera reference.
-        /// </summary>
+        #region Unity
+
         private void Start() => _camera = GetComponent<Camera>();
 
-        /// <summary>
-        /// Update the camera position
-        /// </summary>
+        private void OnEnable() => _connectionStatusEvtSO.AddObserver(OnConnectionStatusChanged);
+
+        private void OnDisable() => _connectionStatusEvtSO.AddObserver(OnConnectionStatusChanged);
+
         private void Update()
         {
+            if (!_canMove) return;
+
             // Get the previous camera position.
             if (Input.GetMouseButtonDown(0))
                 _prevPosition = _camera.ScreenToViewportPoint(Input.mousePosition);
@@ -39,10 +37,10 @@ namespace CameraUtilities
             if (Input.GetMouseButton(0)) UpdateCameraPosition();
         }
 
-        /// <summary>
-        /// Update the position and rotation of the camera to observe the target
-        /// using the mouse position to calculate the direction.
-        /// </summary>
+        #endregion Unity
+
+        #region Camera Movement
+
         private void UpdateCameraPosition()
         {
             var direction = _prevPosition - _camera.ScreenToViewportPoint(Input.mousePosition);
@@ -58,5 +56,16 @@ namespace CameraUtilities
             // Get the camera previous position.
             _prevPosition = _camera.ScreenToViewportPoint(Input.mousePosition);
         }
+
+        #endregion Camera Movement
+
+        #region Connection Status
+
+        private void OnConnectionStatusChanged(MqttConnectionStatusData statusData)
+        {
+            _canMove = statusData.Status == UnityMQTT.MqttConnectionStatus.Connected;
+        }
+
+        #endregion Connection Status
     }
 }
