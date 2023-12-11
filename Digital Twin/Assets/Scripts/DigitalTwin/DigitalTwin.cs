@@ -40,15 +40,16 @@ namespace DigitalTwin
 
         private void OnEnable()
         {
+            _connectEvtSO.AddObserver(ConnectToBroker);
+            _disconnectEvtSO.AddObserver(Disconnect);
         }
 
         protected override void OnDisable()
         {
-        }
+            _connectEvtSO.RemoveObserver(ConnectToBroker);
+            _disconnectEvtSO.RemoveObserver(Disconnect);
 
-        protected override void Update()
-        {
-            base.Update();
+            base.OnDisable();
         }
 
         #endregion Unity
@@ -83,7 +84,7 @@ namespace DigitalTwin
         protected override void OnConnecting()
         {
             _connectionStatusEvtSO.Invoke(_onConnecting);
-            base.OnConnected();
+            base.OnConnecting();
         }
 
         protected override void OnConnectionFailed(string errorMessage)
@@ -94,7 +95,7 @@ namespace DigitalTwin
 
         protected override void OnConnected()
         {
-            _connectionStatusEvtSO.Invoke(_onConnectionFailed);
+            _connectionStatusEvtSO.Invoke(_onConnected);
             base.OnConnected();
         }
 
